@@ -1,0 +1,23 @@
+{
+  "displayName": "DSH Memory",
+  "shortDescription": "DSH local long-term memory: search, read, propose and approve",
+  "longDescription": "Connects to the DSH local memory store (~/.dsh/memory/, Markdown, maintained by DSH). Provides read-only search (memory_search / memory_read / memory_list_pending) and tiered writes: Tier A direct write (memory_write, limited to adding facts/projects and appending journal, with sensitive-content interception and audit); Tier B proposal approval (memory_propose / memory_approve / memory_reject, approval only responds to explicit in-session user instructions). Data stays on this machine, no network access.",
+  "developerName": "dsh-local",
+  "skillOverrides": {
+    "dsh-memory": {
+      "displayName": "DSH Memory",
+      "description": "DSH local long-term memory: search, read, propose and approve."
+    }
+  },
+  "tryPrompts": [
+    "Read the memory index.md and tell me the latest project status",
+    "Search my memory for entries about the memory store",
+    "List this month's pending memory proposals"
+  ],
+  "mcpOverrides": {
+    "dsh-memory": {
+      "displayName": "DSH Memory",
+      "description": "DSH local long-term memory: tiered search, read-only reads, proposal approval (data stays local, no network)."
+    }
+  }
+}

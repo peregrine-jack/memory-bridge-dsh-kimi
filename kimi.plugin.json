@@ -1,0 +1,52 @@
+{
+  "$schema": "https://kimi.com/schemas/kimi.plugin.schema.json",
+  "name": "dsh-memory",
+  "version": "0.0.2",
+  "description": "DSH 本地长期记忆：分级检索 + 分级写入 + 提案审批",
+  "keywords": [
+    "memory",
+    "dsh",
+    "local",
+    "mcp",
+    "长期记忆"
+  ],
+  "author": "peregrine-jack",
+  "skills": "./skills/",
+  "sessionStart": {
+    "skill": "dsh-memory"
+  },
+  "interface": {
+    "defaultLocale": "zh-CN",
+    "locales": "./locales/",
+    "displayName": "DSH Memory",
+    "shortDescription": "DSH 本地长期记忆：检索、读取、提案与审批",
+    "longDescription": "接入 DSH 本地记忆库（~/.dsh/memory/，Markdown，DSH 维护）。提供只读检索（memory_search / memory_read / memory_list_pending）与分级写入：Tier A 直写（memory_write，限 facts/projects 新增与 journal 追加，带敏感拦截与审计）；Tier B 提案审批（memory_propose / memory_approve / memory_reject，审批只响应用户当会话明确指令）。数据只在本机，不联网。",
+    "developerName": "peregrine-jack",
+    "category": "PRODUCTIVITY",
+    "skillOverrides": {
+      "dsh-memory": {
+        "displayName": "DSH 记忆",
+        "description": "DSH 本地长期记忆：检索、读取、提案与审批。"
+      }
+    },
+    "tryPrompts": [
+      "读一下记忆库 index.md，告诉我最近的待办项目状态",
+      "搜索记忆里关于「记忆库」的条目",
+      "列出本月待审批的记忆提案"
+    ],
+    "mcpOverrides": {
+      "dsh-memory": {
+        "displayName": "DSH Memory",
+        "description": "DSH 本地长期记忆：分级检索、只读读取、提案审批（数据只在本机，不联网）。"
+      }
+    }
+  },
+  "mcpServers": {
+    "dsh-memory": {
+      "command": "node",
+      "args": [
+        "CHANGE_ME:\\path\\to\\memory-bridge-dsh-kimi\\mcp\\memory-keeper-mcp.mjs"
+      ]
+    }
+  }
+}
